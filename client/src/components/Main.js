@@ -9,6 +9,7 @@ import 'styles/main.scss'
 import Header from './Header'
 import Footer from './Footer'
 import Chart from './Chart'
+import RangeSlider from './RangeSlider'
 import { loadServerStatus } from '../actions/statusActions'
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -23,6 +24,7 @@ export default class App extends React.Component {
       <div>
         <Header />
         <Chart />
+        <RangeSlider />
         <Footer />
       </div>
     )

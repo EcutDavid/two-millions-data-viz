@@ -35,16 +35,6 @@ const initChart = (data) => {
       d3.select(this)
       .attr('fill', '#4A90E2')
     })
-
-  d3.select(svgArea)
-    .append('g')
-    .call(yAxis)
-    .attr({
-      id: 'yAxis',
-      transform: `translate(${xLeftPadding}, ${yTopPadding})`,
-      fill: 'none',
-      stroke: 'black'
-    })
 }
 
 @connect(mapStateToProps)
