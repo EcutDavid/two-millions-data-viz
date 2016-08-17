@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "API of two-millions-data-viz",
   "main": "",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "eslint": "^3.3.1",
