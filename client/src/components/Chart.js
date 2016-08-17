@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import 'styles/chart.scss'
 
-// TODO replace these [0, 90], [0, 100] with real data
 const xScale = d3.scale.linear().domain([0, 100]).range([0, 460])
 
 const yAxisScale = d3.scale.linear().domain([0, 100]).range([360, 0])
