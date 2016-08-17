@@ -1,17 +1,16 @@
 import React from 'react'
 
+import Header from './Header'
 import 'font-awesome/css/font-awesome.min.css'
 import 'normalize.css/normalize.css'
-import 'styles/app.scss'
+import 'styles/main.scss'
 
-class AppComponent extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
-      <div className='index'>
-        <button className='button'>Hello splunk</button>
+      <div>
+        <Header />
       </div>
     )
   }
 }
-
-export default AppComponent
