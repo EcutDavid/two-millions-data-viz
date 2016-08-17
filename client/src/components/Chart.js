@@ -1,4 +1,5 @@
 import d3 from 'd3'
+import React from 'react'
 
 import 'styles/chart.scss'
 
@@ -64,8 +65,6 @@ const initChart = () => {
       stroke: 'black'
     })
 }
-
-import React from 'react'
 
 export default class Chart extends React.Component {
   componentDidMount() {
