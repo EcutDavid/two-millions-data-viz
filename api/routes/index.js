@@ -4,8 +4,8 @@ const express = require('express')
 const router = express.Router()
 module.exports = router
 
+// Tell requester location of the server, and the range of data
 router.get('/status', (req, res) => {
-  // res.sendStatus(404)
   const location = process.env.location || ''
   const { startHour, endHour } = dataManager.retrieveDataRange()
   return res.json({ data: { location, startHour, endHour } })
