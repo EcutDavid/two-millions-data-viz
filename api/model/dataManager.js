@@ -106,7 +106,10 @@ class DataManager {
   }
 
   retrieveDataRange() {
-    return { start: this.firstHourIndex, end: this.updatedDateInHour }
+    return {
+      startHour: this.firstHourIndex,
+      endHour: this.updatedDateInHour
+    }
   }
 }
 
