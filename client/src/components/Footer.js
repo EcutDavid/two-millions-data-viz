@@ -7,7 +7,6 @@ import 'styles/footer.scss'
 export default class Header extends React.Component {
   render() {
     const { location } = this.props
-    console.log(location);
 
     return (
       <div className='Footer'>

@@ -37,9 +37,6 @@ function mapDispatchToProps (dispatch) {
 
 function mapStateToProps(state) {
   const isLoding = state.status.get('isLoding')
-  const location = state.status.get('location')
-  const startHour = state.status.get('startHour')
-  const endHour = state.status.get('endHour')
 
-  return { isLoding, location }
+  return { isLoding }
 }

@@ -1,22 +1,19 @@
 import d3 from 'd3'
 import React from 'react'
+import { connect } from 'react-redux'
 
 import 'styles/chart.scss'
 
-const data = []
-for (let i = 0; i < 90; i++) {
-  data.push(Number.parseInt(Math.random() * 100))
-}
-
 // TODO replace these [0, 90], [0, 100] with real data
-const xScale = d3.scale.linear().domain([0, 90]).range([0, 360])
-const yScale = d3.scale.linear().domain([0, 100]).range([0, 360])
+const xScale = d3.scale.linear().domain([0, 100]).range([0, 460])
+
 const yAxisScale = d3.scale.linear().domain([0, 100]).range([360, 0])
 
 const xLeftPadding = 32
 const yTopPadding = 15
 
-const initChart = () => {
+const initChart = (data) => {
+  const yScale = d3.scale.linear().domain([0, d3.max(data)]).range([0, 460])
   const svgArea = document.querySelector('.Chart svg')
   d3.select(svgArea).selectAll('rect')
     .data(data)
@@ -55,7 +52,9 @@ const initChart = () => {
   const yAxis = d3.svg.axis()
     .orient('left')
     .scale(yAxisScale)
-    d3.select(svgArea)
+    // .tickValues(data)
+
+  d3.select(svgArea)
     .append('g')
     .call(yAxis)
     .attr({
@@ -66,9 +65,11 @@ const initChart = () => {
     })
 }
 
+@connect(mapStateToProps)
 export default class Chart extends React.Component {
-  componentDidMount() {
-    initChart()
+  componentWillUpdate(props) {
+    const { data } = props
+    if(data) initChart(data)
   }
 
   render() {
@@ -77,5 +78,15 @@ export default class Chart extends React.Component {
         <svg />
       </div>
     )
+  }
+}
+
+function mapStateToProps(state) {
+  const data = state.data.get('data')
+  const isLoding = state.status.get('isLoding')
+
+  return {
+    data,
+    isLoding
   }
 }

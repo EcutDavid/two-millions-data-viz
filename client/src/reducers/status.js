@@ -17,7 +17,6 @@ export default function user (state = initialState, action) {
     if(location) state = state.set('location', location)
     if(startHour) state = state.set('startHour', startHour)
     if(endHour) state = state.set('endHour', endHour)
-    console.log(endHour);
     return state
   default:
     return state

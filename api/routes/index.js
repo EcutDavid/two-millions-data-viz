@@ -14,8 +14,6 @@ router.get('/status', (req, res) => {
 function parseQS(req, res) {
   let { start, end } = req.query
   if(!start || !end) return res.sendStatus(400)
-  console.log(start);
-  console.log(end);
   start = Number.parseInt(start)
   end = Number.parseInt(end)
   if(Number.isNaN(start) || Number.isNaN(end)) return res.sendStatus(400)
@@ -23,7 +21,6 @@ function parseQS(req, res) {
 }
 
 router.get('/data/second', (req, res) => {
-  console.log(req.query);
   const { start, end } = parseQS(req, res)
   if(start && end) {
     const result = dataManager.retrieveDataInSeconds(start, end)
@@ -33,7 +30,6 @@ router.get('/data/second', (req, res) => {
 })
 
 router.get('/data/minute', (req, res) => {
-  console.log(req.query);
   const { start, end } = parseQS(req, res)
   if(start && end) {
     const result = dataManager.retrieveDataInMinutes(start, end)
@@ -43,7 +39,6 @@ router.get('/data/minute', (req, res) => {
 })
 
 router.get('/data/hour', (req, res) => {
-  console.log(req.query);
   const { start, end } = parseQS(req, res)
   if(start && end) {
     const result = dataManager.retrieveDataInHours(start, end)
