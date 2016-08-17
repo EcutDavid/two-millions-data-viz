@@ -36,24 +36,6 @@ const initChart = (data) => {
       .attr('fill', '#4A90E2')
     })
 
-  const xAxis = d3.svg.axis()
-    .orient('bottom')
-    .scale(xScale)
-    d3.select(svgArea)
-    .append('g')
-    .call(xAxis)
-    .attr({
-      id: 'xAxis',
-      transform: `translate(${xLeftPadding}, ${360 + yTopPadding})`,
-      fill: 'none',
-      stroke: 'black'
-    })
-
-  const yAxis = d3.svg.axis()
-    .orient('left')
-    .scale(yAxisScale)
-    // .tickValues(data)
-
   d3.select(svgArea)
     .append('g')
     .call(yAxis)
