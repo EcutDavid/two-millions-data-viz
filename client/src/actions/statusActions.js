@@ -6,6 +6,7 @@ import { pullDataInHourLevel } from './dataAction'
 export function loadServerStatus() {
   return dispatch => {
     request
+      // TODO: replace the hard coding here
       .get('http://localhost:3000/status')
       .end((err, res) => {
         if (err) {

@@ -15,6 +15,16 @@ const yTopPadding = 15
 const initChart = (data) => {
   const yScale = d3.scale.linear().domain([0, d3.max(data)]).range([0, 460])
   const svgArea = document.querySelector('.Chart svg')
+
+  d3.select(svgArea).selectAll('rect')
+    .attr({
+      height: d => yScale(d),
+      width: 4,
+      x: (_, i) => xScale(i) + xLeftPadding,
+      y: d => 360 - yScale(d) + yTopPadding,
+      fill: '#4A90E2'
+    })
+
   d3.select(svgArea).selectAll('rect')
     .data(data)
     .enter()

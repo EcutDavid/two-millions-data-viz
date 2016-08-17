@@ -9,6 +9,7 @@ export function pullDataInHourLevel(start, end) {
   return dispatch => {
     dispatch({ type: CHANGE_LOADING_STATUS, payload: { isLoding: true }})
     request
+      // TODO: replace the hard coding here
       .get(`http://localhost:3000/data/hour?start=${start}&end=${end}`)
       .end((err, res) => {
         if (err) {
