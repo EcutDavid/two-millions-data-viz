@@ -14,11 +14,27 @@ describe('dataManager', () => {
       const result = dataManager.retrieveDataInSeconds(time + 100, time + 200)
       assert.equal(result, undefined)
     })
-    
+
     it('Should works for normal cases', () => {
       const time = Math.floor(Date.now() / 1000)
       const result = dataManager.retrieveDataInSeconds(time - 1000, time - 100)
       assert.equal(result.length, 1000 - 100)
+    })
+  })
+
+  describe('minute level', () => {
+    it('Should works for normal cases', () => {
+      const time = Math.floor(Date.now() / 1000 / 60)
+      const result = dataManager.retrieveDataInSeconds(time - 30, time - 20)
+      assert.equal(result.length, 30 - 20)
+    })
+  })
+
+  describe('hour level', () => {
+    it('Should works for normal cases', () => {
+      const time = Math.floor(Date.now() / 1000 / 60 / 60)
+      const result = dataManager.retrieveDataInSeconds(time - 30, time - 20)
+      assert.equal(result.length, 30 - 20)
     })
   })
 })
