@@ -1,4 +1,5 @@
-## A case study of data visualization for large data set   
+## A case study of data visualization for large data set 
+![image](https://cloud.githubusercontent.com/assets/10692276/17745306/f334dce4-64dd-11e6-8712-749f44c786d9.png)
 Environment requirement: node.js v6.2.0.   
 
 
