@@ -20,11 +20,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { inInitFetching } = this.props
     return (
       <div>
         <Header />
         <Chart />
-        <RangeSlider />
+        { !inInitFetching && <RangeSlider /> }
         <Footer />
       </div>
     )
@@ -38,7 +39,7 @@ function mapDispatchToProps (dispatch) {
 }
 
 function mapStateToProps(state) {
-  const isLoding = state.status.get('isLoding')
+  const inInitFetching = state.status.get('inInitFetching')
 
-  return { isLoding }
+  return { inInitFetching }
 }

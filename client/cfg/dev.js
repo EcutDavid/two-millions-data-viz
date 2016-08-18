@@ -18,7 +18,7 @@ let config = Object.assign({}, baseConfig, {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       API_BASE_URL:
-        JSON.stringify(process.env.API_BASE_URL || 'http://127.0.0.1:3000')
+        JSON.stringify(process.env.API_BASE_URL || 'http://45.55.2.201:4000')
     }),
   ],
   module: defaultSettings.getDefaultModules()
