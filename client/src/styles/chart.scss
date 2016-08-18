@@ -1,8 +1,29 @@
 .Chart {
   margin: 50px auto 0;
+  position: relative;
   width: 500px;
+
   svg {
     height: 400px;
     width: 500px;
+  }
+
+  .tooltip {
+    display: inline-block;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 12px;
+    width: 160px;
+
+    .time {
+      color: #fff;
+    }
+
+    .number {
+      color: #fff;
+    }
   }
 }

@@ -1,14 +1,17 @@
 .Range {
   text-align: center;
+
   .reactSlider {
     height: 8px;
     background-color: #dadee5;
     margin: 0px auto 20px auto;
     width: 500px;
+
     .bar-1 {
       background-color: #6cbef0;
       height: 8px;
     }
+
     .handle {
       background-color: skyblue;
       border-radius: 50%;
