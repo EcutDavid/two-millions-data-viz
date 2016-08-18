@@ -24,6 +24,15 @@ const initChart = (data, startHour) => {
       y: d => 360 - yScale(d) + yTopPadding,
       fill: '#4A90E2'
     })
+    .on('mouseenter', function(d, i) {
+      d3.select('.Chart .tooltip .time')
+        .text(formatDate(startHour + i))
+      d3.select('.Chart .tooltip .number')
+        .text(d)
+      tooltip
+        .transition()
+        .style('opacity', 1)
+    })
 
   d3.select(svgArea).selectAll('rect')
     .data(data)
@@ -90,7 +99,7 @@ export default class Chart extends React.Component {
 function mapStateToProps(state) {
   const data = state.data.get('data')
   const isLoding = state.status.get('isLoding')
-  const startHour = state.status.get('startHour')
+  const startHour = state.data.get('start')
 
   return {
     data,
