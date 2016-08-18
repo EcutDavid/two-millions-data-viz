@@ -31,7 +31,7 @@ const initChart = (data, startHour) => {
         .text(d)
       tooltip
         .transition()
-        .style('opacity', 1)
+        .style('opacity', 0.7)
     })
 
   d3.select(svgArea).selectAll('rect')
@@ -64,7 +64,7 @@ const initChart = (data, startHour) => {
         .text(d)
       tooltip
         .transition()
-        .style('opacity', 1)
+        .style('opacity', 0.7)
     })
     .on('mousemove', () => {
       const point = d3.mouse(svgArea)

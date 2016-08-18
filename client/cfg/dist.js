@@ -13,7 +13,9 @@ let config = Object.assign({}, baseConfig, {
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
+      API_BASE_URL:
+        JSON.stringify(process.env.API_BASE_URL || 'http://127.0.0.1:3000')
     }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

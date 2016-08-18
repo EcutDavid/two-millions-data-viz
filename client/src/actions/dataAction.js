@@ -1,3 +1,4 @@
+/* global API_BASE_URL */
 import request from 'superagent'
 
 import { CHANGE_LOADING_STATUS } from './statusActions'
@@ -10,7 +11,7 @@ export function pullDataInHourLevel(start, end) {
     dispatch({ type: CHANGE_LOADING_STATUS, payload: { isLoding: true }})
     request
       // TODO: replace the hard coding here
-      .get(`http://localhost:3000/data/hour?start=${start}&end=${end}`)
+      .get(`${API_BASE_URL}/data/hour?start=${start}&end=${end}`)
       .end((err, res) => {
         if (err) {
           dispatch({ type: CHANGE_LOADING_STATUS, payload: { isLoding: false }})
