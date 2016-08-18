@@ -16,7 +16,8 @@
   },
   "scripts": {
     "test": "mocha --watch",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "David Guan(davidguandev@gmail.com)",

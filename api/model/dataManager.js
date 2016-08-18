@@ -2,8 +2,6 @@
 const DATA_COUNT = 2 * 1000 * 1000
 const { generateRandomNumber } = require('../helpers/number')
 
-// TODO fix edge case bug, implement mintutes, hours update.
-
 class DataManager {
   constructor() {
     // Hash table of data for different granularities
@@ -12,7 +10,6 @@ class DataManager {
       = this.valuesInHourLevel
       = {}
 
-    // Fix bug for edge cases.
     this.updatedDateInSecond = Math.floor(Date.now() / 1000)
     this.firstSecondIndex = this.updatedDateInSecond - DATA_COUNT + 1
 
@@ -34,7 +31,6 @@ class DataManager {
       const index = this.firstSecondIndex + counter++
       this.valuesInSecondLevel[index] = generateRandomNumber()
     }
-
 
     counter = 0
     let loopLength = this.updatedDateInMinute - this.firstMinuteIndex + 1
@@ -61,6 +57,39 @@ class DataManager {
     }
   }
 
+  updateHourAccCounter() {
+    this.hourAccCounter++
+    if(this.hourAccCounter === 60) {
+      this.hourAccCounter = 0
+      const startPoint = this.updatedDateInHour++ * 60
+      let sum = 0
+      for (let i = 0; i < 60; i++) {
+       sum += this.valuesInMinuteLevel[startPoint + i]
+      }
+      this.valuesInHourLevel[this.updatedDateInHour] = sum
+
+      // Remove the head item
+      this.valuesInHourLevel[this.firstHourIndex++] = undefined
+    }
+  }
+
+  updateMinuteAccCounter() {
+    this.minuteAccCounter++
+    if(this.minuteAccCounter === 60) {
+      this.minuteAccCounter = 0
+      const startPoint = this.updatedDateInMinute++ * 60
+      let sum = 0
+      for (let i = 0; i < 60; i++) {
+       sum += this.valuesInSecondLevel[startPoint + i]
+      }
+      this.valuesInMinuteLevel[this.updatedDateInMinute] = sum
+
+      // Remove the head item
+      this.valuesInSecondLevel[this.firstMinuteIndex++] = undefined
+      this.updateHourAccCounter()
+    }
+  }
+
   // As the real world, every second there will be new data generated
   handleMessageQueue() {
     setInterval(() => {
@@ -77,8 +106,9 @@ class DataManager {
 
         // Remove the head item
         this.valuesInSecondLevel[this.firstSecondIndex++] = undefined
+        this.updateMinuteAccCounter()
       }
-    }, 1000) // One new data point per second
+    }, 1000)
   }
 
   retrieveData(data, start, end) {
